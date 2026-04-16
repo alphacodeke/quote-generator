@@ -4,80 +4,123 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}QuoteBox{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --bg-card: #1a1a1a;
+      --text-primary: #ededed;
+      --text-secondary: #a0a0a0;
+      --accent: #8b5cf6;
+      --accent-hover: #7c3aed;
+      --border: #2a2a2a;
+      --success: #10b981;
+      --error: #ef4444;
+      --quote-mark: #2a2a2a;
+    }
+
     body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: #f9f7f4;
-      color: #2d2d2d;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
     nav {
-      background: #2d2d2d;
+      background: rgba(17, 17, 17, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
       padding: 0 2rem;
       display: flex;
       align-items: center;
       gap: 2rem;
-      height: 56px;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     nav .brand {
-      color: #f0e6d3;
-      font-size: 1.2rem;
-      font-weight: bold;
+      color: var(--accent);
+      font-size: 1.3rem;
+      font-weight: 700;
       text-decoration: none;
-      letter-spacing: 0.05em;
+      letter-spacing: -0.02em;
       margin-right: auto;
+      background: linear-gradient(135deg, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     nav a {
-      color: #c8b99a;
+      color: var(--text-secondary);
       text-decoration: none;
-      font-family: system-ui, sans-serif;
       font-size: 0.9rem;
-      letter-spacing: 0.03em;
-      transition: color 0.2s;
+      font-weight: 500;
+      transition: all 0.2s;
+      padding: 0.5rem 0;
     }
 
-    nav a:hover { color: #f0e6d3; }
+    nav a:hover { color: var(--accent); }
 
     .container {
-      max-width: 760px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 3rem 1.5rem;
       flex: 1;
+      width: 100%;
     }
 
     h1 {
-      font-size: 1.8rem;
-      font-weight: normal;
-      color: #1a1a1a;
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, var(--text-secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       margin-bottom: 2rem;
+      letter-spacing: -0.02em;
     }
 
     .messages { list-style: none; margin-bottom: 1.5rem; }
 
     .messages li {
-      padding: 0.75rem 1rem;
-      border-radius: 4px;
-      font-family: system-ui, sans-serif;
+      padding: 0.875rem 1.25rem;
+      border-radius: 12px;
       font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
     }
 
-    .messages .success { background: #e6f4ea; color: #2d6a3f; border-left: 4px solid #4caf50; }
-    .messages .error   { background: #fdecea; color: #8b1a1a; border-left: 4px solid #e53935; }
+    .messages .success { background: rgba(16, 185, 129, 0.1); color: var(--success); border-left: 3px solid var(--success); }
+    .messages .error { background: rgba(239, 68, 68, 0.1); color: var(--error); border-left: 3px solid var(--error); }
 
     footer {
       text-align: center;
-      padding: 1.5rem;
-      font-family: system-ui, sans-serif;
+      padding: 2rem;
       font-size: 0.8rem;
-      color: #999;
-      border-top: 1px solid #e8e2d9;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; gap: 1rem; }
+      .container { padding: 2rem 1rem; }
+      h1 { font-size: 1.5rem; }
     }
   </style>
 </head>
@@ -101,6 +144,8 @@
     {% block content %}{% endblock %}
   </div>
 
-  <footer>QuoteBox — a personal quote collection <a href="https://anthonyke.netlify.app/">ALPHACODE</a></footer>
+  <footer>
+    QuoteBox — a personal quote collection by <a href="https://anthonyke.netlify.app/"><i class="fas fa-user"></i> ALPHACODE</a>
+  </footer>
 </body>
 </html>

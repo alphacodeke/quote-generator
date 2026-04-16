@@ -5,79 +5,80 @@
 {% block content %}
 <style>
   .form-card {
-    background: #fff;
-    border: 1px solid #e8e2d9;
-    border-radius: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
     padding: 2.5rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
   }
 
-  .form-group { margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.75rem; }
 
   label {
     display: block;
-    font-family: system-ui, sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
-    color: #555;
+    color: var(--accent);
     margin-bottom: 0.5rem;
   }
 
   input[type="text"],
   textarea {
     width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: Georgia, serif;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-family: inherit;
     font-size: 1rem;
-    color: #2d2d2d;
-    background: #fafaf9;
-    transition: border-color 0.2s;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    transition: all 0.2s;
   }
 
   input[type="text"]:focus,
   textarea:focus {
     outline: none;
-    border-color: #2d2d2d;
-    background: #fff;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
   }
 
   textarea { resize: vertical; min-height: 120px; }
 
   .errorlist {
     list-style: none;
-    margin-top: 0.4rem;
-    font-family: system-ui, sans-serif;
+    margin-top: 0.5rem;
     font-size: 0.8rem;
-    color: #c0392b;
+    color: var(--error);
   }
 
   .submit-btn {
-    background: #2d2d2d;
-    color: #f0e6d3;
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    color: white;
     border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 4px;
-    font-family: system-ui, sans-serif;
-    font-size: 0.95rem;
+    padding: 0.875rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: all 0.2s;
+    width: 100%;
   }
 
-  .submit-btn:hover { background: #444; }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+  }
 
   .note {
     margin-top: 1rem;
-    font-family: system-ui, sans-serif;
-    font-size: 0.82rem;
-    color: #999;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
   }
 </style>
 
-<h1>Add a Quote</h1>
+<h1><i class="fas fa-quote-left"></i> Add a Quote</h1>
 
 <div class="form-card">
   <form method="post">
@@ -96,7 +97,7 @@
     </div>
 
     <button type="submit" class="submit-btn">Submit Quote</button>
-    <p class="note">Quotes are reviewed before appearing publicly.</p>
+    <p class="note"><i class="fas fa-info-circle"></i> Quotes are reviewed before appearing publicly</p>
   </form>
 </div>
 {% endblock %}

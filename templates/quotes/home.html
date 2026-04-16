@@ -5,69 +5,87 @@
 {% block content %}
 <style>
   .quote-card {
-    background: #fff;
-    border: 1px solid #e8e2d9;
-    border-radius: 8px;
-    padding: 3rem 3.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3rem;
     margin: 2rem 0;
     position: relative;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .quote-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 
   .quote-card::before {
-    content: "\201C";
+    content: '"';
     font-size: 8rem;
-    color: #e8e2d9;
+    color: var(--quote-mark);
     position: absolute;
-    top: -1.5rem;
+    top: -1rem;
     left: 1.5rem;
     line-height: 1;
     font-family: Georgia, serif;
+    opacity: 0.5;
   }
 
   .quote-text {
-    font-size: 1.4rem;
-    line-height: 1.7;
-    color: #1a1a1a;
-    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
   }
 
   .quote-author {
-    font-family: system-ui, sans-serif;
-    font-size: 0.95rem;
-    color: #777;
-    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.02em;
   }
 
   .quote-author::before { content: "— "; }
 
   .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     margin-top: 1.5rem;
-    padding: 0.6rem 1.4rem;
-    background: #2d2d2d;
-    color: #f0e6d3;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    color: white;
     text-decoration: none;
-    border-radius: 4px;
-    font-family: system-ui, sans-serif;
+    border-radius: 12px;
+    font-weight: 600;
     font-size: 0.875rem;
-    transition: background 0.2s;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
   }
 
-  .btn:hover { background: #444; }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+  }
 
   .empty {
     text-align: center;
-    padding: 4rem 0;
-    color: #999;
-    font-family: system-ui, sans-serif;
+    padding: 4rem 2rem;
+    background: var(--bg-card);
+    border-radius: 20px;
+    border: 1px solid var(--border);
   }
 
-  .empty a { color: #2d2d2d; }
+  .empty p { color: var(--text-secondary); margin-bottom: 1rem; }
+  .empty a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .empty a:hover { text-decoration: underline; }
 </style>
 
-<h1>Today's Quote</h1>
+<h1><i class="fas fa-quote-left"></i> Today's Quote</h1>
 
 {% if quote %}
   <div class="quote-card">
@@ -77,8 +95,8 @@
   <a href="{% url 'home' %}" class="btn">↻ New Random Quote</a>
 {% else %}
   <div class="empty">
-    <p>No approved quotes yet.</p>
-    <p style="margin-top:0.5rem"><a href="{% url 'add_quote' %}">Add the first one →</a></p>
+    <p><i class="fas fa-quote-right"></i> No approved quotes yet.</p>
+    <p><a href="{% url 'add_quote' %}">Add the first one →</a></p>
   </div>
 {% endif %}
 {% endblock %}
