@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}QuoteBox{% endblock %}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f9f7f4;
+      color: #2d2d2d;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      background: #2d2d2d;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 56px;
+    }
+
+    nav .brand {
+      color: #f0e6d3;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      margin-right: auto;
+    }
+
+    nav a {
+      color: #c8b99a;
+      text-decoration: none;
+      font-family: system-ui, sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: #f0e6d3; }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      flex: 1;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: normal;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+    }
+
+    .messages { list-style: none; margin-bottom: 1.5rem; }
+
+    .messages li {
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      font-family: system-ui, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .messages .success { background: #e6f4ea; color: #2d6a3f; border-left: 4px solid #4caf50; }
+    .messages .error   { background: #fdecea; color: #8b1a1a; border-left: 4px solid #e53935; }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-family: system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: #999;
+      border-top: 1px solid #e8e2d9;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{% url 'home' %}" class="brand">❝ QuoteBox</a>
+    <a href="{% url 'home' %}">Random</a>
+    <a href="{% url 'quote_list' %}">All Quotes</a>
+    <a href="{% url 'add_quote' %}">+ Add Quote</a>
+  </nav>
+
+  <div class="container">
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer>QuoteBox — a personal quote collection <a href="https://anthonyke.netlify.app/">ALPHACODE</a></footer>
+</body>
+</html>

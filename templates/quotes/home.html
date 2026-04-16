@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}QuoteBox — Daily Inspiration{% endblock %}
+
+{% block content %}
+<style>
+  .quote-card {
+    background: #fff;
+    border: 1px solid #e8e2d9;
+    border-radius: 8px;
+    padding: 3rem 3.5rem;
+    margin: 2rem 0;
+    position: relative;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .quote-card::before {
+    content: "\201C";
+    font-size: 8rem;
+    color: #e8e2d9;
+    position: absolute;
+    top: -1.5rem;
+    left: 1.5rem;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .quote-text {
+    font-size: 1.4rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .quote-author {
+    font-family: system-ui, sans-serif;
+    font-size: 0.95rem;
+    color: #777;
+    letter-spacing: 0.05em;
+  }
+
+  .quote-author::before { content: "— "; }
+
+  .btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.4rem;
+    background: #2d2d2d;
+    color: #f0e6d3;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: system-ui, sans-serif;
+    font-size: 0.875rem;
+    transition: background 0.2s;
+  }
+
+  .btn:hover { background: #444; }
+
+  .empty {
+    text-align: center;
+    padding: 4rem 0;
+    color: #999;
+    font-family: system-ui, sans-serif;
+  }
+
+  .empty a { color: #2d2d2d; }
+</style>
+
+<h1>Today's Quote</h1>
+
+{% if quote %}
+  <div class="quote-card">
+    <p class="quote-text">{{ quote.text }}</p>
+    <p class="quote-author">{{ quote.author }}</p>
+  </div>
+  <a href="{% url 'home' %}" class="btn">↻ New Random Quote</a>
+{% else %}
+  <div class="empty">
+    <p>No approved quotes yet.</p>
+    <p style="margin-top:0.5rem"><a href="{% url 'add_quote' %}">Add the first one →</a></p>
+  </div>
+{% endif %}
+{% endblock %}

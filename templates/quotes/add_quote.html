@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Add a Quote — QuoteBox{% endblock %}
+
+{% block content %}
+<style>
+  .form-card {
+    background: #fff;
+    border: 1px solid #e8e2d9;
+    border-radius: 8px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .form-group { margin-bottom: 1.5rem; }
+
+  label {
+    display: block;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    color: #2d2d2d;
+    background: #fafaf9;
+    transition: border-color 0.2s;
+  }
+
+  input[type="text"]:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #2d2d2d;
+    background: #fff;
+  }
+
+  textarea { resize: vertical; min-height: 120px; }
+
+  .errorlist {
+    list-style: none;
+    margin-top: 0.4rem;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    color: #c0392b;
+  }
+
+  .submit-btn {
+    background: #2d2d2d;
+    color: #f0e6d3;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-family: system-ui, sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .submit-btn:hover { background: #444; }
+
+  .note {
+    margin-top: 1rem;
+    font-family: system-ui, sans-serif;
+    font-size: 0.82rem;
+    color: #999;
+  }
+</style>
+
+<h1>Add a Quote</h1>
+
+<div class="form-card">
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="{{ form.text.id_for_label }}">Quote</label>
+      {{ form.text }}
+      {% if form.text.errors %}<ul class="errorlist">{% for e in form.text.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+    </div>
+
+    <div class="form-group">
+      <label for="{{ form.author.id_for_label }}">Author</label>
+      {{ form.author }}
+      {% if form.author.errors %}<ul class="errorlist">{% for e in form.author.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+    </div>
+
+    <button type="submit" class="submit-btn">Submit Quote</button>
+    <p class="note">Quotes are reviewed before appearing publicly.</p>
+  </form>
+</div>
+{% endblock %}
