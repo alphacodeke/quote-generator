@@ -1,5 +1,11 @@
 # ❝ QuoteBox
 
+![Django](https://img.shields.io/badge/Django-4.2+-092E20?style=for-the-badge&logo=django&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
 A minimal personal quote collection app built with Django. Submit quotes, approve them via the admin panel, and serve a random one on the homepage.
 
 ## Features
@@ -13,23 +19,21 @@ A minimal personal quote collection app built with Django. Submit quotes, approv
 ## Quick Start
 
 ```bash
-# 1. Unzip and enter the project
-unzip quote_project.zip && cd quote_project
 
-# 2. Create and activate a virtual environment (recommended)
+# 1. Create and activate a virtual environment (recommended)
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 
-# 3. Install dependencies
+# 2. Install dependencies
 pip install -r requirements.txt
 
-# 4. Apply migrations
+# 3. Apply migrations
 python manage.py migrate
 
-# 5. Create an admin user
+# 4. Create an admin user
 python manage.py createsuperuser
 
-# 6. Run the development server
+# 5. Run the development server
 python manage.py runserver
 ```
 
@@ -78,9 +82,6 @@ quote_project/
         ├── add_quote.html
         └── quote_list.html
 ```
-
-## Admin credentials (pre-created):
- admin / admin123
 
 ## Data Model
 
