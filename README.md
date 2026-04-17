@@ -16,6 +16,17 @@ A minimal personal quote collection app built with Django. Submit quotes, approv
 - **All quotes list** — browse every approved quote with date
 - **SQLite** — zero-config database, works out of the box
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="screenshots/landing.png" width="45%" />
+  <img src="screenshots/clipsync-all.png.png" width="45%" />
+</p>
+
+<p align="center">
+  <img src="screenshots/clipsync-add.png.png" width="45%" />
+</p>
+
 ## Quick Start
 
 ```bash

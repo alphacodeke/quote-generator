@@ -1,0 +1,8 @@
+# Django structure
+templates/** linguist-detectable=false
+static/** linguist-detectable=false
+
+# Extra safety (any loose files)
+*.html linguist-detectable=false
+*.css linguist-detectable=false
+*.js linguist-detectable=false
